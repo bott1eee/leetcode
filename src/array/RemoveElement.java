@@ -1,7 +1,5 @@
 package array;
 
-import com.sun.deploy.panel.JreTableModel;
-
 import java.util.Arrays;
 
 public class RemoveElement {
@@ -20,9 +18,28 @@ public class RemoveElement {
         return size;
     }
 
+
+    public int removeElement_2(int[] nums, int val){
+
+        int slowIndex = 0;
+        int fastIndex = 0;
+
+        for (;fastIndex<nums.length;fastIndex++){
+            if (nums[fastIndex]!=val){
+                nums[slowIndex] = nums[fastIndex];
+                slowIndex++;
+            }
+        }
+        return slowIndex;
+    }
+
     public static void main(String[] args) {
-        int[] nums = {0,1,2,3,3,0,4,2};
-        System.out.println(new RemoveElement().removeElement(nums,2));
-        System.out.println(Arrays.toString(nums));
+        int[] nums_1 = {0,1,2,3,3,0,4,2};
+        System.out.println(new RemoveElement().removeElement(nums_1,2));
+        System.out.println(Arrays.toString(nums_1));
+
+        int[] nums_2 = {0,1,2,3,3,0,4,2};
+        System.out.println(new RemoveElement().removeElement_2(nums_2,2));
+        System.out.println(Arrays.toString(nums_2));
     }
 }
