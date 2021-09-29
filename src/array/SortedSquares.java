@@ -4,11 +4,15 @@ import java.util.Arrays;
 
 public class SortedSquares {
 
+    //暴力求解法
+    //先计算数组平方，在对其进行排序
     public int[] sortedSquared(int[] nums){
 
+        //平方
         for (int i = 0;i< nums.length;i++){
             nums[i]=nums[i]*nums[i];
         }
+        //排序
         for (int i = 0;i< nums.length;i++){
             for (int j=i+1;j<nums.length;j++){
                 if (nums[i]>nums[j]){
@@ -21,6 +25,8 @@ public class SortedSquares {
         return nums;
     }
 
+    //双指针法
+    //两个指针分别指向排序数组的头尾部，再判断两者的平方大小，大者写入结果数组的尾部
     public int[] sortedSquares_2(int[] nums){
 
         int result[] = new int[nums.length];
