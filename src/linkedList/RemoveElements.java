@@ -4,24 +4,8 @@ import java.util.List;
 
 public class RemoveElements {
 
-    public static class ListNode {
-        int val;
-        ListNode next;
 
-        ListNode() {
-        }
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-    }
-
-    public ListNode removeElements(ListNode head, int val) {
+    public ListNode removeElements_noVirtualNode(ListNode head, int val) {
         while (head != null && head.val == val)
             head = head.next;
 
@@ -30,6 +14,26 @@ public class RemoveElements {
 
         ListNode pre = head;
         ListNode cur = head.next;
+        while (cur != null) {
+            if (cur.val == val) {
+                pre.next = cur.next;
+            } else {
+                pre = cur;
+            }
+            cur = cur.next;
+        }
+        return head;
+    }
+
+    public ListNode removeElements_virtualNode(ListNode head, int val) {
+
+        if (head == null)
+            return head;
+
+        ListNode virtualHead = new ListNode();
+        virtualHead.next=head;
+        ListNode pre = virtualHead;
+        ListNode cur = virtualHead.next;
         while (cur!=null){
             if (cur.val==val){
                 pre.next=cur.next;
@@ -38,6 +42,6 @@ public class RemoveElements {
             }
             cur=cur.next;
         }
-        return head;
+        return virtualHead.next;
     }
 }
