@@ -35,7 +35,7 @@ public class SwapPairs {
         return virtualNode.next;
     }
 
-    public  ListNode swapPairs_2(ListNode head) {
+    public ListNode swapPairs_2(ListNode head) {
         // base case 退出提交
         if (head == null || head.next == null) return head;
         // 获取当前节点的下一个节点

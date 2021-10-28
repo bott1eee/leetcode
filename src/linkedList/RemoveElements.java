@@ -31,16 +31,16 @@ public class RemoveElements {
             return head;
 
         ListNode virtualHead = new ListNode();
-        virtualHead.next=head;
+        virtualHead.next = head;
         ListNode pre = virtualHead;
         ListNode cur = virtualHead.next;
-        while (cur!=null){
-            if (cur.val==val){
-                pre.next=cur.next;
-            }else {
-                pre=cur;
+        while (cur != null) {
+            if (cur.val == val) {
+                pre.next = cur.next;
+            } else {
+                pre = cur;
             }
-            cur=cur.next;
+            cur = cur.next;
         }
         return virtualHead.next;
     }
