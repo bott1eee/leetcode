@@ -22,6 +22,7 @@ public class RemoveNthFromEnd {
 
     /*
     此方法使用虚拟头结点方法。若不使用虚拟头结点直接对其遍历，当链表中只有1个节点时，无法删除其节点。
+    删除倒数第n个节点，就使快指针先前进n个节点，然后使快慢指针同时前进。
      */
     public ListNode removeNthFromEnd(ListNode head, int n) {
 

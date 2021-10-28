@@ -12,6 +12,9 @@ public class GetIntersectionNode {
         }
     }
 
+    /*
+    求两个链表的长度，使其尾部对齐，同时使短链表的头节点对齐长链表的中间节点，然后遍历判断节点是否相等。
+     */
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
 
         ListNode tempA = headA;

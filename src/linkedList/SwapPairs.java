@@ -19,6 +19,9 @@ public class SwapPairs {
         }
     }
 
+    /*
+    使用虚拟头节点，改变ListNode.next
+     */
     public ListNode swapPairs(ListNode head) {
         ListNode virtualNode = new ListNode(0);
         virtualNode.next = head;
