@@ -13,7 +13,8 @@ public class ReverseList {
         ListNode(int val, ListNode next){this.val=val;this.next=next;}
     }
 
-    public ListNode ReverseList(ListNode head){
+    //双指针法
+    public ListNode reverseList(ListNode head){
 
         ListNode pre=null;
         ListNode cur=head;
@@ -25,5 +26,20 @@ public class ReverseList {
             cur=temp;
         }
         return pre;
+    }
+
+    //递归法
+    public ListNode reverseList_2(ListNode head){
+        return reverse(null,head);
+    }
+
+    public ListNode reverse(ListNode pre,ListNode cur){
+        if (cur == null)
+            return pre;
+        ListNode temp = cur.next;
+        cur.next=pre;
+        pre=cur;
+        cur=temp;
+        return reverse(pre,cur);
     }
 }
