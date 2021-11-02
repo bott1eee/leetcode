@@ -1,5 +1,7 @@
 package linkedList;
 
+import java.util.Map;
+
 public class GetIntersectionNode {
 
     public class ListNode {
@@ -36,14 +38,50 @@ public class GetIntersectionNode {
             tempA = tempB;
             tempB = temp;
         }
-        int diff = Math.abs(lenA-lenB);
-        while (diff>0){
-            tempA=tempA.next;
+        int diff = Math.abs(lenA - lenB);
+        while (diff > 0) {
+            tempA = tempA.next;
             diff--;
         }
 
-        while (tempA!=null){
-            if (tempA== tempB){
+        while (tempA != null) {
+            if (tempA == tempB) {
+                return tempA;
+            }
+            tempA = tempA.next;
+            tempB = tempB.next;
+        }
+        return null;
+    }
+
+    public ListNode getIntersectionNode_2(ListNode headA, ListNode headB) {
+
+        ListNode tempA = headA;
+        ListNode tempB = headB;
+
+        int lenA = 0, lenB = 0;
+        while (tempA != null) {
+            lenA++;
+            tempA = tempA.next;
+        }
+        while (tempB != null) {
+            lenB++;
+            tempB = tempB.next;
+        }
+        tempA = headA;
+        tempB = headB;
+        if (lenB > lenA) {
+            ListNode temp = tempA;
+            tempA = tempB;
+            tempB = temp;
+        }
+        int diff = Math.abs(lenA - lenB);
+        while (diff > 0) {
+            tempA = tempA.next;
+            diff--;
+        }
+        while (tempA != null) {
+            if (tempA == tempB) {
                 return tempA;
             }
             tempA = tempA.next;

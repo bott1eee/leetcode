@@ -42,4 +42,18 @@ public class ReverseList {
         cur=temp;
         return reverse(pre,cur);
     }
+
+    public ListNode reverseList_3(ListNode head){
+
+        ListNode pre = null;
+        ListNode cur = head;
+        ListNode temp = null;
+        while (cur != null){
+            temp = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = temp;
+        }
+        return pre;
+    }
 }

@@ -44,4 +44,25 @@ public class RemoveElements {
         }
         return virtualHead.next;
     }
+
+    public ListNode removeElements_virtualNode_2(ListNode head, int val) {
+
+        if (head == null)
+            return head;
+
+        ListNode virtualNode = new ListNode(0);
+        virtualNode.next = head;
+        ListNode pre = virtualNode;
+        ListNode cur = virtualNode.next;
+        while (cur != null){
+            if (cur.val == val){
+                pre.next = cur.next;
+            }else {
+                //注意若遇到需删除结点，不需要移动pre指针。
+                pre = pre.next;
+            }
+            cur = cur.next;
+        }
+        return virtualNode.next;
+    }
 }
