@@ -1,4 +1,4 @@
-package hash;
+package string;
 
 public class ReplaceSpace {
 
