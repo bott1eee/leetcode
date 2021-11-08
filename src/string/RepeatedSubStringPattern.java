@@ -68,4 +68,22 @@ public class RepeatedSubStringPattern {
         }
         return false;
     }
+
+    public boolean repeatedSubStringPattern_4(String s) {
+
+        for (int i=1;i<=s.length()/2;i++){
+            if (s.length()%i==0){
+                boolean flag =true;
+                for (int j = i;j<s.length();j++){
+                    if (s.charAt(j)!=s.charAt(j-i)){
+                        flag=false;
+                        break;
+                    }
+                }
+                if (flag)
+                    return true;
+            }
+        }
+        return false;
+    }
 }

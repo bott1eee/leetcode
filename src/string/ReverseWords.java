@@ -119,8 +119,30 @@ public class ReverseWords {
         return s_array;
     }
 
-    public static String reverseWords_2(String s){
-        char[] s_array = reverseWords(reverseString(clean_space(s.toCharArray())));
+    public static char[] reverseWords_2(char[] s_array) {
+
+        int start = 0;
+        int end = start + 1;
+        while (start < s_array.length) {
+            while (end < s_array.length && s_array[end] != ' ')
+                end++;
+            for (int i = start, j = end - 1; i <= j; ) {
+                char temp = s_array[i];
+                s_array[i] = s_array[j];
+                s_array[j] = temp;
+                i++;
+                j--;
+            }
+            start = end + 1;
+            end = start + 1;
+        }
+
+        return s_array;
+    }
+
+
+    public static String reverseWords_2(String s) {
+        char[] s_array = reverseWords_2(reverseString(clean_space(s.toCharArray())));
         return String.valueOf(s_array);
     }
 }
