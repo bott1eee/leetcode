@@ -12,6 +12,7 @@ public class RemoveElement {
                 for (int j = i + 1; j < size; j++) {
                     nums[j - 1] = nums[j];
                 }
+                i--;
                 size--;
             }
         }
@@ -41,6 +42,34 @@ public class RemoveElement {
         int[] nums_2 = {0, 1, 2, 3, 3, 0, 4, 2};
         System.out.println(new RemoveElement().removeElement_2(nums_2, 2));
         System.out.println(Arrays.toString(nums_2));
+    }
+
+    public int removeElement_3(int[] nums, int val) {
+        int size = nums.length;
+        for (int i = 0; i < size; i++) {
+            if (nums[i] == val) {
+                for (int j = i + 1; j < size; j++) {
+                    nums[j - 1] = nums[j];
+                }
+                i--;
+                size--;
+            }
+        }
+        return size;
+    }
+
+    public int removeElement_4(int[] nums,int val){
+
+        int slow = 0;
+        int fast = 0;
+        for (;fast< nums.length;){
+            if (nums[fast]!=val){
+                nums[slow]=nums[fast];
+                slow++;
+            }
+            fast++;
+        }
+        return slow;
     }
 }
 
