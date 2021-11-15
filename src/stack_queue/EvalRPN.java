@@ -4,6 +4,11 @@ import java.util.ArrayDeque;
 
 public class EvalRPN {
 
+    /*
+    遍历字符串数组，将字符串中的数字 push 进栈
+    若为运算符，则将栈 pop 两次，进行运算
+    运算完成后将运算结果 push 进栈
+     */
     public static int evalRPN(String[] tokens) {
 
         int result = 0;
