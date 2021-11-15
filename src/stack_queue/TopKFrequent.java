@@ -2,6 +2,7 @@ package stack_queue;
 
 import com.sun.javafx.collections.MappingChange;
 
+import java.sql.PreparedStatement;
 import java.util.*;
 
 public class TopKFrequent {
@@ -76,6 +77,14 @@ public class TopKFrequent {
 
     public static void main(String[] args) {
         System.out.println(Arrays.toString(topKFrequent_2(new int[]{1, 2}, 2)));
+
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        Integer[] nums = new Integer[list.size()];
+        nums = list.toArray(new Integer[0]);
+        System.out.println(Arrays.toString(nums));
     }
 
     public int[] topKFrequent_3(int[] nums, int k) {
@@ -127,6 +136,32 @@ public class TopKFrequent {
         for (int i = 0; i < k; i++) {
             result[i] = queue.poll()[0];
         }
+        return result;
+    }
+
+    public int[] topKFrequent_5(int[] nums, int k) {
+
+        int[] result = new int[k];
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i : nums)
+            map.put(i, map.getOrDefault(i, 0) + 1);
+
+        PriorityQueue<Map.Entry<Integer, Integer>> queue = new PriorityQueue<>(new Comparator<Map.Entry<Integer, Integer>>() {
+            @Override
+            public int compare(Map.Entry<Integer, Integer> o1, Map.Entry<Integer, Integer> o2) {
+                return o1.getValue() - o2.getValue();
+            }
+        });
+
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            queue.offer(entry);
+            if (queue.size() > k)
+                queue.poll();
+        }
+
+        for (int i = 0; i < k; i++)
+            result[i] = queue.poll().getKey();
+
         return result;
     }
 }

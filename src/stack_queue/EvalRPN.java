@@ -1,6 +1,7 @@
 package stack_queue;
 
 import java.util.ArrayDeque;
+import java.util.Stack;
 
 public class EvalRPN {
 
@@ -37,5 +38,29 @@ public class EvalRPN {
     public static void main(String[] args) {
         String[] str = new String[]{"2", "1", "+", "3", "*"};
         System.out.println(evalRPN(str));
+    }
+
+    public int evalRPN_2(String[] tokens) {
+
+        Stack<String> stack = new Stack<>();
+        int result = 0;
+        for (int i = 0; i < tokens.length; i++) {
+            if (!tokens[i].equals("+") && !tokens[i].equals("-") && !tokens[i].equals("*") && !tokens[i].equals("/")) {
+                stack.push(tokens[i]);
+            } else {
+                int x1 = Integer.parseInt(stack.pop());
+                int x2 = Integer.parseInt(stack.pop());
+                if (tokens[i].equals("+"))
+                    result = x1 + x2;
+                else if (tokens[i].equals("-"))
+                    result = x2 - x1;
+                else if (tokens[i].equals("*"))
+                    result = x2 * x1;
+                else if (tokens[i].equals("/"))
+                    result = x2 / x1;
+                stack.push(String.valueOf(result));
+            }
+        }
+        return Integer.parseInt(stack.pop());
     }
 }

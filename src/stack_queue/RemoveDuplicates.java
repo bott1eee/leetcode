@@ -11,15 +11,16 @@ public class RemoveDuplicates {
     public static String removeDuplicates(String s) {
 
         ArrayDeque<Character> stack = new ArrayDeque<>();
-        for (char c:s.toCharArray()){
-            if (stack.isEmpty() || stack.peek()!=c){
+        for (char c : s.toCharArray()) {
+            //注意此处，还需判断栈是否为空，若栈此时为空，也应该入栈
+            if (stack.isEmpty() || stack.peek() != c) {
                 stack.push(c);
-            }else {
+            } else {
                 stack.pop();
             }
         }
         StringBuilder stringBuilder = new StringBuilder();
-        while (!stack.isEmpty()){
+        while (!stack.isEmpty()) {
             stringBuilder.append(stack.pop());
         }
         return stringBuilder.reverse().toString();
@@ -27,5 +28,21 @@ public class RemoveDuplicates {
 
     public static void main(String[] args) {
         System.out.println(removeDuplicates("abbaca"));
+    }
+
+    public static String removeDuplicates_2(String s) {
+
+        Stack<Character> stack = new Stack<>();
+        for (char c : s.toCharArray()) {
+            if (!stack.isEmpty() || stack.peek() != c)
+                stack.push(c);
+            else
+                stack.pop();
+        }
+        StringBuilder stringBuilder = new StringBuilder();
+        while (!stack.isEmpty()){
+            stringBuilder.append(stack.pop());
+        }
+        return stringBuilder.reverse().toString();
     }
 }
