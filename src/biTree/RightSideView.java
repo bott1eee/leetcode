@@ -55,6 +55,7 @@ public class RightSideView {
         queue.offer(root);
         int length = 0;
         while (!queue.isEmpty()) {
+            result.add(queue.peek().val);
             length = queue.size();
             while (length > 0) {
                 TreeNode node = queue.poll();
@@ -64,7 +65,6 @@ public class RightSideView {
                     queue.offer(node.left);
                 length--;
             }
-            result.add(queue.peek().val);
         }
         return result;
     }
