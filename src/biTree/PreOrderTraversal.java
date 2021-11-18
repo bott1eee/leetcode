@@ -1,8 +1,6 @@
 package biTree;
 
 
-import sun.reflect.generics.tree.Tree;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -42,8 +40,27 @@ public class PreOrderTraversal {
             result.add(node.val);
             if (node.right != null)
                 stack.push(node.right);
-            if (node.left!=null)
+            if (node.left != null)
                 stack.push(node.left);
+        }
+        return result;
+    }
+
+    public List<Integer> preOrderTraversal_3(TreeNode root) {
+
+        List<Integer> result = new ArrayList<>();
+        if (root == null)
+            return result;
+
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            TreeNode cur = stack.pop();
+            result.add(cur.val);
+            if (cur.right != null)
+                stack.push(cur.right);
+            if (cur.left != null)
+                stack.push(cur.left);
         }
         return result;
     }
