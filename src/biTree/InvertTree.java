@@ -34,4 +34,24 @@ public class InvertTree {
         }
         return root;
     }
+
+    /*
+    递归法
+     */
+    public TreeNode invertTree_2(TreeNode root) {
+
+        if (root == null)
+            return root;
+
+        invertTree_2(root.left);
+        invertTree_2(root.right);
+        swapNode(root);
+        return root;
+    }
+
+    public void swapNode(TreeNode node) {
+        TreeNode temp = node.left;
+        node.left = node.right;
+        node.right = temp;
+    }
 }
