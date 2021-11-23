@@ -26,18 +26,66 @@ public class MinDepth {
             length = queue.size();
             while (length > 0) {
                 TreeNode node = queue.poll();
-                if (node.left == null && node.right == null){
+                if (node.left == null && node.right == null) {
                     queue.clear();
                     break;
                 }
-                if (node.left!= null)
+                if (node.left != null)
                     queue.offer(node.left);
-                if (node.right!=null)
+                if (node.right != null)
                     queue.offer(node.right);
                 length--;
             }
             mindeep++;
         }
         return mindeep;
+    }
+
+    public int minDepth_2(TreeNode root) {
+
+        if (root == null)
+            return 0;
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        int length = 0;
+        int depth = 0;
+        while (!queue.isEmpty()) {
+            length = queue.size();
+            while (length > 0) {
+                TreeNode node = queue.poll();
+                if (node.left == null && node.right == null) {
+                    queue.clear();
+                    break;
+                }
+                if (node.left != null)
+                    queue.offer(node.left);
+                if (node.right != null)
+                    queue.offer(node.right);
+                length--;
+            }
+            depth++;
+        }
+        return depth;
+    }
+
+    /*
+    递归法
+    如果左子树为空，右子树不为空，说明最小深度是 1+右子树的深度
+    反之如果右子树为空，左子树不为空，最小深度是 1+左子树的深度
+    如果左右子树都不为空，返回左右子树深度最小值 +1
+     */
+    public int minDepth_3(TreeNode root) {
+
+        if (root == null)
+            return 0;
+
+        int left = minDepth_3(root.left);
+        int right = minDepth_3(root.right);
+        if (root.left == null)
+            return right + 1;
+        if (root.right == null)
+            return left + 1;
+        return Math.min(left, right) + 1;
     }
 }
