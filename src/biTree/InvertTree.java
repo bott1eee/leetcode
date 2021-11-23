@@ -54,4 +54,45 @@ public class InvertTree {
         node.left = node.right;
         node.right = temp;
     }
+
+    public TreeNode invertTree_3(TreeNode root) {
+
+        if (root == null)
+            return root;
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        int length = 0;
+
+        while (!queue.isEmpty()) {
+            length = queue.size();
+            while (length > 0) {
+                TreeNode node = queue.poll();
+                TreeNode temp = node.left;
+                node.left = node.right;
+                node.right = temp;
+                if (node.left !=null)
+                    queue.offer(node.left);
+                if (node.right !=null)
+                    queue.offer(node.right);
+                length--;
+            }
+        }
+        return root;
+    }
+
+    public TreeNode invertTree_4(TreeNode root) {
+        if (root == null)
+            return root;
+        swapNode_2(root);
+        invertTree_2(root.left);
+        invertTree_2(root.right);
+        return root;
+    }
+
+    public void swapNode_2(TreeNode root) {
+        TreeNode temp = root.left;
+        root.left = root.right;
+        root.right = temp;
+    }
 }
