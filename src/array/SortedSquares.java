@@ -60,6 +60,23 @@ public class SortedSquares {
         int[] nums = {-4, -1, 0, 3, 10};
         System.out.println(Arrays.toString(new SortedSquares().sortedSquared(nums)));
         System.out.println(Arrays.toString(new SortedSquares().sortedSquares_2(nums)));
+    }
 
+    public int[] sorted(int[] nums) {
+
+        int k = nums.length;
+        int[] result = new int[nums.length];
+        int i = 0, j = nums.length - 1;
+        while (i <= j) {
+            if (nums[i] * nums[i] > nums[j] * nums[j]) {
+                result[k] = nums[i] * nums[i];
+                i++;
+            } else {
+                result[k] = nums[j] * nums[j];
+                j--;
+            }
+            k--;
+        }
+        return result;
     }
 }

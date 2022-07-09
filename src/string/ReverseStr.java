@@ -1,5 +1,7 @@
 package string;
 
+import java.util.Arrays;
+
 public class ReverseStr {
 
 
@@ -93,21 +95,21 @@ public class ReverseStr {
         int start = 0;
         int end = s.length();
         StringBuilder stringBuilder = new StringBuilder();
-        while (start<end){
+        while (start < end) {
             int firstK = 0;
             int secondK = 0;
-            if (start+k<end)
-                firstK = start+k;
+            if (start + k < end)
+                firstK = start + k;
             else
                 firstK = end;
-            if (start+2*k<end)
-                secondK = start+2*k;
+            if (start + 2 * k < end)
+                secondK = start + 2 * k;
             else
-                secondK=end;
-            stringBuilder.append(reverseStringSpecify(s.substring(start,firstK),0,s.substring(start,firstK).length()));
-            if (firstK<secondK)
-                stringBuilder.append(s.substring(firstK,secondK));
-            start+=2*k;
+                secondK = end;
+            stringBuilder.append(reverseStringSpecify(s.substring(start, firstK), 0, s.substring(start, firstK).length()));
+            if (firstK < secondK)
+                stringBuilder.append(s.substring(firstK, secondK));
+            start += 2 * k;
         }
         return String.valueOf(stringBuilder);
     }
@@ -124,5 +126,26 @@ public class ReverseStr {
             end--;
         }
         return String.valueOf(s_array);
+    }
+
+    public String reverseString(String s, int k) {
+
+        char[] array = s.toCharArray();
+        int n = s.length();
+        for (int i = 0; i < n; i += n * 2) {
+            reverse(array, i, Math.min(i + k, n) - 1);
+        }
+        return new String(array);
+    }
+
+    public void reverse(char[] str, int left, int right) {
+
+        while (left < right) {
+            char temp = str[left];
+            str[left] = str[right];
+            str[right] = temp;
+            left++;
+            right--;
+        }
     }
 }

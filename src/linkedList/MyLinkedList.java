@@ -22,11 +22,11 @@ public class MyLinkedList {
     }
 
     public void addAtHead(int val) {
-        addAtIndex(0,val);
+        addAtIndex(0, val);
     }
 
     public void addAtTail(int val) {
-        addAtIndex(size,val);
+        addAtIndex(size, val);
     }
 
     public void addAtIndex(int index, int val) {
@@ -50,9 +50,45 @@ public class MyLinkedList {
             return;
         ListNode pre = head;
         for (int i = 0; i < index; i++) {
-            pre=pre.next;
+            pre = pre.next;
         }
-        pre.next=pre.next.next;
+        pre.next = pre.next.next;
+        size--;
+    }
+
+    public int get_2(int index) {
+        if (index < 0 || index > size)
+            return -1;
+        ListNode cur = head;
+        for (int i = 0; i <= index; i++) {
+            cur = cur.next;
+        }
+        return cur.val;
+    }
+
+    public void addAtIndex_2(int index, int val) {
+        if (index > size)
+            return;
+        if (index < 0)
+            index = 0;
+        ListNode pre = head;
+        for (int i = 0; i < index; i++) {
+            pre = pre.next;
+        }
+        ListNode insertNode = new ListNode(val);
+        insertNode.next = pre.next;
+        pre.next = insertNode;
+        size++;
+    }
+
+    public void deleteAtIndex_2(int index) {
+        if (index < 0 || index > size)
+            return;
+        ListNode pre = head;
+        for (int i = 0; i < index; i++) {
+            pre = pre.next;
+        }
+        pre.next = pre.next.next;
         size--;
     }
 }

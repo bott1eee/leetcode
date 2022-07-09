@@ -32,19 +32,19 @@ public class ReverseLeftWords {
      */
     public static String reverseLeftWords_2(String s, int n) {
 
-        s=reverseString(s,0,n-1);
-        s=reverseString(s,n,s.length()-1);
-        s=reverseString(s,0,s.length()-1);
+        s = reverseString(s, 0, n - 1);
+        s = reverseString(s, n, s.length() - 1);
+        s = reverseString(s, 0, s.length() - 1);
         return s;
     }
 
-    public static  String reverseString(String s, int start, int end){
+    public static String reverseString(String s, int start, int end) {
 
         char[] s_array = s.toCharArray();
-        while (start<end){
+        while (start < end) {
             char temp = s_array[start];
-            s_array[start]=s_array[end];
-            s_array[end]=temp;
+            s_array[start] = s_array[end];
+            s_array[end] = temp;
             start++;
             end--;
         }
@@ -52,6 +52,20 @@ public class ReverseLeftWords {
     }
 
     public static void main(String[] args) {
-        System.out.println(reverseLeftWords_2("abcdefg",2));
+        System.out.println(reverseLeftWords_2("abcdefg", 2));
+    }
+
+    public static String reverseleft(String s, int n) {
+
+        char[] array = s.toCharArray();
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = n; i < s.length(); i++) {
+            stringBuilder.append(array[i]);
+        }
+        for (int i = 0; i < n; i++) {
+            stringBuilder.append(array[i]);
+        }
+
+        return stringBuilder.toString();
     }
 }

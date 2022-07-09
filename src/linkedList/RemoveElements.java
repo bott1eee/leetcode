@@ -54,15 +54,67 @@ public class RemoveElements {
         virtualNode.next = head;
         ListNode pre = virtualNode;
         ListNode cur = virtualNode.next;
-        while (cur != null){
-            if (cur.val == val){
+        while (cur != null) {
+            if (cur.val == val) {
                 pre.next = cur.next;
-            }else {
+            } else {
                 //注意若遇到需删除结点，不需要移动pre指针。
                 pre = pre.next;
             }
             cur = cur.next;
         }
         return virtualNode.next;
+    }
+
+    public ListNode remove(ListNode head, int val) {
+
+        ListNode virtualNode = new ListNode();
+        virtualNode.next = head;
+        ListNode pre = virtualNode;
+        ListNode cur = virtualNode.next;
+        while (cur != null) {
+            if (cur.val == val) {
+                pre.next = cur.next;
+            } else {
+                pre = pre.next;
+            }
+            cur = cur.next;
+        }
+        return virtualNode.next;
+    }
+
+
+    public ListNode remove_2(ListNode head, int target) {
+
+        ListNode virtualNode = new ListNode();
+        virtualNode.next = head;
+        ListNode pre = virtualNode;
+        ListNode cur = virtualNode.next;
+        while (cur != null) {
+            if (cur.val == target) {
+                pre.next = cur.next;
+            } else {
+                pre = pre.next;
+            }
+            cur = cur.next;
+        }
+        return virtualNode.next;
+    }
+
+
+    public ListNode remove_3(ListNode head, int val) {
+        ListNode virtualHead = new ListNode();
+        virtualHead.next = head;
+        ListNode cur = head;
+        ListNode pre = virtualHead;
+        while (cur != null) {
+            if (cur.val == val){
+                pre.next = cur.next;
+            }else {
+                pre = pre.next;
+            }
+            cur = cur.next;
+        }
+        return virtualHead.next;
     }
 }

@@ -1,6 +1,7 @@
 package stack_queue;
 
 import java.util.ArrayDeque;
+import java.util.Arrays;
 import java.util.Deque;
 import java.util.Stack;
 
@@ -28,6 +29,10 @@ public class RemoveDuplicates {
 
     public static void main(String[] args) {
         System.out.println(removeDuplicates("abbaca"));
+
+        int[] nums = {1,2,3,5,7};
+        String str = Arrays.toString(nums);
+        System.out.println(str);
     }
 
     public static String removeDuplicates_2(String s) {

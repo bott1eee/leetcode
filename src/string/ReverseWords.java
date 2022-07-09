@@ -54,7 +54,8 @@ public class ReverseWords {
 //        System.out.println(reverseString(clean_space("   i love  you   ".toCharArray())));
 //        System.out.println(reverseWords(reverseString(clean_space("   i love  you   ".toCharArray()))));
 //        System.out.println(reverseWords("i love you".toCharArray()));
-        System.out.println(reverseWords_2("the sky is blue"));
+//        System.out.println(reverseWords_2("the sky is blue"));
+        System.out.println(reverse_words(reverse_all_str(clean_space("   i love    you".toCharArray()))));
     }
 
     /*
@@ -144,5 +145,59 @@ public class ReverseWords {
     public static String reverseWords_2(String s) {
         char[] s_array = reverseWords_2(reverseString(clean_space(s.toCharArray())));
         return String.valueOf(s_array);
+    }
+
+    public static char[] sweepBlank(char[] array) {
+
+        StringBuilder stringBuilder = new StringBuilder();
+        int start = 0;
+        int end = array.length - 1;
+        while (array[start] == ' ')
+            start++;
+        while (array[end] == ' ')
+            end--;
+
+        while (start < end) {
+            if (array[start] != ' ') {
+                stringBuilder.append(array[start]);
+            } else if (array[start] == ' ' && array[start - 1] != ' ') {
+                stringBuilder.append(array[start]);
+            }
+            start++;
+        }
+        return stringBuilder.toString().toCharArray();
+    }
+
+    public static char[] reverse_all_str(char[] array) {
+
+        int left = 0;
+        int right = array.length - 1;
+        while (left < right) {
+            char temp = array[left];
+            array[left] = array[right];
+            array[right] = temp;
+            left++;
+            right--;
+        }
+        return array;
+    }
+
+    public static char[] reverse_words(char[] array) {
+
+        int start = 0;
+        int end = start + 1;
+        while (start < array.length) {
+            while (end < array.length && array[end] != ' ') {
+                end++;
+            }
+            for (int i = start, j = end - 1; i < j; i++, j--) {
+                char temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+            }
+            start = end + 1;
+            end = start + 1;
+        }
+        return array;
     }
 }

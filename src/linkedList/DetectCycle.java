@@ -50,21 +50,43 @@ public class DetectCycle {
         return null;
     }
 
-    public ListNode detectCycle_2(ListNode head){
+    public ListNode detectCycle_2(ListNode head) {
 
         ListNode fast = head;
         ListNode slow = head;
-        while (fast != null && fast.next != null){
+        while (fast != null && fast.next != null) {
             fast = fast.next.next;
             slow = slow.next;
-            if (slow == fast){
+            if (slow == fast) {
                 ListNode entrance = head;
-                while (true){
-                    if (entrance == slow){
+                while (true) {
+                    if (entrance == slow) {
                         return entrance;
                     }
                     entrance = entrance.next;
                     slow = slow.next;
+                }
+            }
+        }
+        return null;
+    }
+
+    public ListNode detect(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            //说明有环
+            if (slow == fast) {
+                ListNode entrace = head;
+                while (true) {
+                    if (entrace == slow) {
+                        return entrace;
+                    }
+                    slow = slow.next;
+                    entrace = entrace.next;
                 }
             }
         }

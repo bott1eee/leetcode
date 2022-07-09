@@ -17,12 +17,24 @@ public class ReplaceSpace {
     public String replaceSpace_2(String s) {
 
         StringBuilder stringBuilder = new StringBuilder();
-        for (char c:s.toCharArray()){
-            if (c==' ')
+        for (char c : s.toCharArray()) {
+            if (c == ' ')
                 stringBuilder.append("%20");
             else
                 stringBuilder.append(c);
         }
         return String.valueOf(stringBuilder);
+    }
+
+    public String replace(String s) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (char c:s.toCharArray()){
+            if (c != ' '){
+                stringBuilder.append(c);
+            } else {
+                stringBuilder.append("%20");
+            }
+        }
+        return stringBuilder.toString();
     }
 }

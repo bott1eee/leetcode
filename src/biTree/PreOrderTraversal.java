@@ -1,6 +1,9 @@
 package biTree;
 
 
+import linkedList.DetectCycle;
+import sun.reflect.generics.tree.Tree;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -63,5 +66,19 @@ public class PreOrderTraversal {
                 stack.push(cur.left);
         }
         return result;
+    }
+
+    public List<Integer> preorderTraversal_2(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        digui(root,result);
+        return result;
+    }
+
+    public void digui(TreeNode node, List<Integer> result) {
+        if (node == null)
+            return;
+        result.add(node.val);
+        digui(node.left,result);
+        digui(node.right,result);
     }
 }

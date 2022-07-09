@@ -81,7 +81,51 @@ public class MinSubArrayLen {
         System.out.println(new MinSubArrayLen().minSubArrayLen(7, nums));
         System.out.println(new MinSubArrayLen().minSubArrayLen_2(7, nums));
         System.out.println(new MinSubArrayLen().minSubArrayLen_3(7, nums));
+    }
 
+    public int minLength(int target, int[] nums) {
 
+        int min_length = 0;
+        int length = 0;
+        int sum = 0;
+        for (int i = 0; i < nums.length; i++) {
+            length = 1;
+            sum = nums[i];
+            if (nums[i] >= target) {
+                return 1;
+            }
+            for (int j = i + 1; j < nums.length; j++) {
+                sum += nums[j];
+                length++;
+                if (sum >= target) {
+                    if (min_length == 0)
+                        min_length = length;
+                    if (min_length > length)
+                        min_length = length;
+                    break;
+                }
+            }
+        }
+        return min_length;
+    }
+
+    public int slide(int target, int[] nums) {
+        int min_length = 0;
+        int length = 0;
+        int sum = 0;
+        int left = 0, right = 0;
+        while (right < nums.length) {
+            sum += nums[right];
+            while (sum >= target) {
+                length = right - left + 1;
+                if (min_length == 0 || min_length > length)
+                    min_length = length;
+                sum -= nums[left];
+                left++;
+            }
+            right++;
+        }
+
+        return min_length;
     }
 }

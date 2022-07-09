@@ -79,4 +79,21 @@ public class SwapPairs {
         }
         return virtualHead.next;
     }
+
+    public ListNode swap(ListNode head) {
+
+        ListNode virtualHead = new ListNode();
+        virtualHead.next = head;
+        ListNode pre = virtualHead;
+
+        while (pre.next != null && pre.next.next != null) {
+            ListNode temp = head.next.next;
+            pre.next = head.next;
+            head.next.next = head;
+            head.next = temp;
+            pre = head;
+            head = head.next;
+        }
+        return virtualHead.next;
+    }
 }

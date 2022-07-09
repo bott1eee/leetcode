@@ -64,11 +64,12 @@ public class GenerateMatrix {
 //                System.out.println(a[i][j]);
 //        }
 
-        int a[][] = new GenerateMatrix().matrix(5);
-        for (int i=0;i<5;i++){
-            for (int j = 0;j<5;j++)
-                System.out.println(a[i][j]);
-        }
+//        int a[][] = new GenerateMatrix().matrix(5);
+//        for (int i=0;i<5;i++){
+//            for (int j = 0;j<5;j++)
+//                System.out.println(a[i][j]);
+//        }
+        System.out.println(Math.pow(4,2));
     }
 
 

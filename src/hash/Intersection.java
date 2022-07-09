@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Intersection {
 
-    public static int[] intersection(int[] nums1,int[] nums2){
+    public static int[] intersection(int[] nums1, int[] nums2) {
 
 //        Set<Integer> set1 = new HashSet<>();
 //        Set<Integer> set2 = new HashSet<>();
@@ -35,19 +35,40 @@ public class Intersection {
          */
         Set<Integer> set = new HashSet<>();
         Set<Integer> inter_set = new HashSet<>();
-        for (int i:nums1)
+        for (int i : nums1)
             set.add(i);
-        for (int i:nums2)
+        for (int i : nums2)
             if (set.contains(i))
                 inter_set.add(i);
         int[] inter = new int[inter_set.size()];
-        int index=0;
-        for (int i:inter_set)
-            inter[index++]=i;
+        int index = 0;
+        for (int i : inter_set)
+            inter[index++] = i;
         return inter;
     }
 
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(intersection(new int[]{4,9,5},new int[]{9,4,9,8,4})));
+        System.out.println(Arrays.toString(intersection(new int[]{4, 9, 5}, new int[]{9, 4, 9, 8, 4})));
+    }
+
+    public int[] getInter(int[] nums1, int[] nums2) {
+
+        Set<Integer> set = new HashSet<>();
+        for (int i:nums1){
+            set.add(i);
+        }
+        Set<Integer> set_inter = new HashSet<>();
+        for (int i :nums2){
+            if (set.contains(i)){
+                set_inter.add(i);
+            }
+        }
+        int[] result = new int[set_inter.size()];
+        int index = 0;
+        for (int i:set_inter){
+            result[index] = i;
+            index++;
+        }
+        return result;
     }
 }
